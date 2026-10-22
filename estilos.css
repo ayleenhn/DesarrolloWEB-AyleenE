@@ -1,0 +1,273 @@
+:root {
+    --principal: #254c65;
+    --principal-claro: #3f7396;
+    --oscuro: #1c2933;
+    --gris: #52616d;
+    --borde: #dce4e9;
+    --tinte: #eef3f6;
+    --fondo: #e8edf1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 40px 18px;
+    background: var(--fondo);
+    color: var(--oscuro);
+    font-family: "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
+    line-height: 1.55;
+}
+
+/* Hoja del currículum */
+.curriculum {
+    --pad-x: 58px;
+    --pad-y: 48px;
+    max-width: 850px;
+    margin: auto;
+    padding: var(--pad-y) var(--pad-x);
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 34px #182f4222;
+}
+
+/* Encabezado en banda de color */
+.encabezado {
+    margin: calc(var(--pad-y) * -1) calc(var(--pad-x) * -1) 0;
+    padding: 38px var(--pad-x) 28px;
+    background: linear-gradient(135deg, var(--principal), var(--principal-claro));
+    color: white;
+}
+
+.etiqueta {
+    margin: 0 0 10px;
+    color: #b9d3e4;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(29px, 5vw, 42px);
+    line-height: 1.12;
+    letter-spacing: .6px;
+}
+
+h2 {
+    margin: 12px 0 0;
+    font-size: 17px;
+    font-weight: 400;
+    color: #dcebf4;
+}
+
+.contacto {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 18px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #ffffff40;
+    font-size: 13px;
+}
+
+.contacto p {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.contacto p:last-child {
+    grid-column: 1 / -1;
+}
+
+.encabezado a {
+    color: white;
+}
+
+/* Texto general */
+a {
+    color: var(--principal);
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    text-decoration: underline;
+}
+
+section {
+    margin-top: 30px;
+}
+
+h3 {
+    margin: 0 0 16px;
+    padding: 7px 12px;
+    background: var(--tinte);
+    border-left: 4px solid var(--principal);
+    color: var(--principal);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+}
+
+p {
+    margin: 6px 0;
+    font-size: 14.5px;
+}
+
+/* Entradas con línea de tiempo */
+.entrada {
+    position: relative;
+    margin: 0 0 22px 6px;
+    padding-left: 20px;
+    border-left: 2px solid var(--borde);
+}
+
+.entrada::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: -7px;
+    width: 12px;
+    height: 12px;
+    background: var(--principal);
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.entrada:last-child {
+    margin-bottom: 0;
+}
+
+.entrada-titulo {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+}
+
+h4 {
+    margin: 0;
+    font-size: 15.5px;
+}
+
+.entrada-titulo span {
+    padding: 2px 11px;
+    background: var(--tinte);
+    border-radius: 999px;
+    color: var(--principal);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.institucion {
+    font-weight: 600;
+    color: var(--gris);
+}
+
+/* Listas con viñeta cuadrada de color */
+ul {
+    margin: 9px 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 14.5px;
+}
+
+li {
+    position: relative;
+    margin: 6px 0;
+    padding-left: 18px;
+}
+
+li::before {
+    content: "";
+    position: absolute;
+    top: .6em;
+    left: 2px;
+    width: 7px;
+    height: 7px;
+    background: var(--principal-claro);
+    border-radius: 2px;
+}
+
+.habilidades {
+    columns: 2;
+    column-gap: 35px;
+}
+
+.habilidades li {
+    break-inside: avoid;
+}
+
+/* Celular */
+@media (max-width: 620px) {
+    body {
+        padding: 0;
+    }
+
+    .curriculum {
+        --pad-x: 22px;
+        --pad-y: 28px;
+        border-radius: 0;
+    }
+
+    .encabezado {
+        padding-top: 30px;
+    }
+
+    .contacto {
+        grid-template-columns: 1fr;
+    }
+
+    .habilidades {
+        columns: 1;
+    }
+}
+
+/* Impresión / PDF */
+@media print {
+    @page {
+        size: A4;
+        margin: 13mm;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .curriculum {
+        padding: 0;
+        max-width: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .encabezado {
+        margin: 0;
+        padding: 24px 28px 20px;
+        border-radius: 6px;
+    }
+
+    h3 {
+        break-after: avoid;
+    }
+
+    .entrada {
+        break-inside: avoid;
+    }
+
+    a {
+        color: inherit;
+    }
+}
